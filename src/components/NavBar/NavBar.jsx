@@ -12,6 +12,8 @@ const NavBar = ({handleLogout}) => {
   const logOut = useCallback(() => {
     dispatch(logout());
   }, [dispatch]);
+
+
   return (
     <>
       {user ?
@@ -21,6 +23,7 @@ const NavBar = ({handleLogout}) => {
             <li><Link to="/profiles">Profiles</Link></li>
             <li><Link to="" onClick={logOut}>LOG OUT</Link></li>
             <li><Link to="/changePassword">Change Password</Link></li>
+            <li><Link to='/dashboard'>Dash Board</Link></li>
           </ul>
         </nav>
       :

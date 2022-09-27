@@ -7,7 +7,13 @@ const Landing = () => {
 
   return (
     <main className={styles.container}>
-      <h1>hello, </h1>
+      {user ?
+        <h1>welcome {user.name}</h1>
+        :
+        <h1>
+          Welcome, Please Sign Up or Log In to get Started
+        </h1>
+      }
     </main>
   )
 }
