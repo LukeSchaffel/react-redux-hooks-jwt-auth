@@ -21,7 +21,6 @@ export const login = async (email, password) => {
       password,
     })
     const data = res.data
-    console.log(data);
     if (data.accessToken) {
       tokenService.setToken(data.accessToken)
     }

@@ -1,7 +1,6 @@
 import { useState, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import styles from './LoginForm.module.css'
-import * as authService from '../../services/authService'
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../actions/auth";
 
