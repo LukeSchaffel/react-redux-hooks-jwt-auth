@@ -1,6 +1,17 @@
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../actions/auth"
+import { useCallback } from 'react';
 
-const NavBar = ({ user, handleLogout }) => {
+const NavBar = ({handleLogout}) => {
+  const dispatch = useDispatch()
+  
+  const { isLoggedIn, user } = useSelector(state => state.authReducer);
+  console.log(user);
+
+  const logOut = useCallback(() => {
+    dispatch(logout());
+  }, [dispatch]);
   return (
     <>
       {user ?
@@ -8,7 +19,7 @@ const NavBar = ({ user, handleLogout }) => {
           <ul>
             <li>Welcome, {user.name}</li>
             <li><Link to="/profiles">Profiles</Link></li>
-            <li><Link to="" onClick={handleLogout}>LOG OUT</Link></li>
+            <li><Link to="" onClick={logOut}>LOG OUT</Link></li>
             <li><Link to="/changePassword">Change Password</Link></li>
           </ul>
         </nav>

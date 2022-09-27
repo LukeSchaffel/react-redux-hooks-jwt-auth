@@ -1,28 +1,41 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import styles from './LoginForm.module.css'
 import * as authService from '../../services/authService'
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../actions/auth";
 
-const LoginForm = props => {
+const LoginForm = () => {
+  const state = useSelector(state => state)
+  
+  const { isLoggedIn } = useSelector(state => state.authReducer);
+  const { messageReducer } = useSelector(state => state);
+
+  
+  const dispatch = useDispatch();
+
+  
+
+
   const [formData, setFormData] = useState({
     email: '',
-    pw: '',
+    password: '',
   })
   const navigate = useNavigate()
 
   const handleChange = e => {
-    props.updateMessage('')
+    
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
   const handleSubmit = async evt => {
     evt.preventDefault()
     try {
-      await authService.login(formData)
-      props.handleSignupOrLogin()
+       dispatch(login(formData.email, formData.password))
+      
       navigate('/')
     } catch (err) {
-      props.updateMessage(err.message)
+      
     }
   }
 
@@ -49,8 +62,8 @@ const LoginForm = props => {
           type="password"
           autoComplete="off"
           id="password"
-          value={formData.pw}
-          name="pw"
+          value={formData.password}
+          name="password"
           onChange={handleChange}
         />
       </div>
