@@ -29,8 +29,7 @@ const SignupForm = props => {
     e.preventDefault()
     try {
       dispatch(signup(formData.name, formData.email, formData.password))
-      props.handleSignupOrLogin()
-      navigate('/')
+      navigate('/login')
     } catch (err) {
       
     }

@@ -5,8 +5,12 @@ import {
   LOGIN_FAIL,
   LOGOUT,
 } from "../actions/types";
+import { getUserFromToken } from "../services/tokenService";
 
-const user = JSON.parse(localStorage.getItem("user"));
+// const user = JSON.parse(localStorage.getItem("user"));
+
+const user = getUserFromToken()
+
 
 const initialState = user
   ? { isLoggedIn: true, user }
