@@ -14,8 +14,6 @@ const LoginForm = () => {
   
   const dispatch = useDispatch();
 
-  
-
 
   const [formData, setFormData] = useState({
     email: '',
@@ -32,7 +30,6 @@ const LoginForm = () => {
     evt.preventDefault()
     try {
        dispatch(login(formData.email, formData.password))
-      
       navigate('/')
     } catch (err) {
       

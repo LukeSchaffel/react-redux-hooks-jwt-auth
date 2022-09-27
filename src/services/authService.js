@@ -21,13 +21,14 @@ export const login = async (email, password) => {
       password,
     })
     const data = res.data
+    console.log(data);
     if (data.accessToken) {
-      tokenService.setToken(data.token)
+      tokenService.setToken(data.accessToken)
     }
     return data
 };
 
 export const logout = () => {
-  localStorage.removeToken();
+  tokenService.removeToken();
 };
 

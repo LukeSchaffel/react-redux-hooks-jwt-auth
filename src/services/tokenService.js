@@ -18,7 +18,7 @@ export const getToken = () => {
   return token
 }
 
-function removeToken() {
+export const removeToken = () => {
   localStorage.removeItem('token')
 }
 

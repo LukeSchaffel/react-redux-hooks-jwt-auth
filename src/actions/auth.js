@@ -48,9 +48,10 @@ export const signup = (username, email, password) => (dispatch) => {
 export const login = (username, password) => (dispatch) => {
   return authService.login(username, password).then(
     (data) => {
+      console.log(data);
       dispatch({
         type: LOGIN_SUCCESS,
-        payload: { user: data },
+        payload: { user: data.user },
       });
 
       return Promise.resolve();

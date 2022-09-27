@@ -5,6 +5,7 @@ import NavBar from './components/NavBar/NavBar';
 import Landing from './pages/Landing/Landing';
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
+import { useDispatch, useSelector } from "react-redux";
 
 
 
@@ -13,7 +14,7 @@ function App() {
   // authService.register('me', 'me@gmail.com', 'you')
 
   // authService.login('me@gmail.com', 'you')  
-
+  const state = useSelector(state => state)
 
   return (
     <div className="App">

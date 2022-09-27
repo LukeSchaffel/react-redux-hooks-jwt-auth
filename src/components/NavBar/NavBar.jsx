@@ -7,7 +7,7 @@ const NavBar = ({handleLogout}) => {
   const dispatch = useDispatch()
   
   const { isLoggedIn, user } = useSelector(state => state.authReducer);
-  console.log(user);
+
 
   const logOut = useCallback(() => {
     dispatch(logout());
