@@ -37,14 +37,17 @@ export const getAllProfiles = async (user) => {
   return users
 }
 
-export const deleteUser = async (user) => {
-  const { id } = user
+export const deleteProfile = async (id) => {
+  console.log(id);
   const res = await axios.delete(`${API_URL}/${id}`,{
     headers: {
       'Authorization': `Bearer ${tokenService.getToken()}`
     }
   })
+  const profile = res.data
+  return profile
 }
+
 
 
 export const logout = () => {

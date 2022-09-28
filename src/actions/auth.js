@@ -6,7 +6,9 @@ import {
   LOGOUT,
   SET_MESSAGE,
   GET_PROFILES_SUCCESS,
-  GET_PROFILES_FAIL
+  GET_PROFILES_FAIL,
+  DELETE_PROFILE_SUCCESS,
+  DELETE_PROFILE_FAIL
 } from "./types";
 
 import * as authService from "../services/authService";
@@ -111,6 +113,39 @@ export const getAllProfiles = () => (dispatch) => {
     }
   );
 };
+
+export const deleteProfile = (id) => (dispatch) => {
+  return authService.deleteProfile(id)
+  .then(
+    (data) => {
+      dispatch({
+        type: DELETE_PROFILE_SUCCESS,
+        payload: { profile: data },
+      });
+
+      return Promise.resolve();
+    },
+    (error) => {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      dispatch({
+        type: DELETE_PROFILE_FAIL,
+      });
+
+      dispatch({
+        type: SET_MESSAGE,
+        payload: message,
+      });
+
+      return Promise.reject();
+    }
+  );
+}
 
 
 export const logout = () => (dispatch) => {

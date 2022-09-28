@@ -18,7 +18,7 @@ const Dashboard = () => {
       handleGetAllProfiles()
     }
   }, [])
-console.log(profiles);
+
 
   return (
     <>

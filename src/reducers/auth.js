@@ -5,7 +5,9 @@ import {
   LOGIN_FAIL,
   LOGOUT,
   GET_PROFILES_FAIL,
-  GET_PROFILES_SUCCESS
+  GET_PROFILES_SUCCESS,
+  DELETE_PROFILE_FAIL,
+  DELETE_PROFILE_SUCCESS
 } from "../actions/types";
 import { getUserFromToken } from "../services/tokenService";
 
@@ -49,10 +51,23 @@ export const authReducer = (state = initialState, action) => {
         user: null,
       };
     case GET_PROFILES_SUCCESS:
+      const newProfiles = payload.profiles.filter((profile) => {
+        return profile.id !== user.id
+      })
       return {
         ...state,
-        profiles: payload.profiles
+        profiles: newProfiles
       };
+    case DELETE_PROFILE_SUCCESS:
+      const profiles = state.profiles
+      const newProfiles2 = profiles.filter((profile) => {
+        return profile.id !== payload.profile.id
+      })
+      return {
+        ...state,
+        profiles: newProfiles2
+      }
+
     default:
       return state;
   }

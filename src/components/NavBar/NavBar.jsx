@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../actions/auth"
 import { useCallback } from 'react';
 
-const NavBar = ({handleLogout}) => {
+const NavBar = () => {
   const dispatch = useDispatch()
   
-  const { isLoggedIn, user } = useSelector(state => state.authReducer);
+  const { user } = useSelector(state => state.authReducer);
 
 
   const logOut = useCallback(() => {
