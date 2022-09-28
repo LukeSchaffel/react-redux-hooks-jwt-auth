@@ -38,7 +38,6 @@ export const getAllProfiles = async (user) => {
 }
 
 export const deleteProfile = async (id) => {
-  console.log(id);
   const res = await axios.delete(`${API_URL}/${id}`,{
     headers: {
       'Authorization': `Bearer ${tokenService.getToken()}`
@@ -48,6 +47,15 @@ export const deleteProfile = async (id) => {
   return profile
 }
 
+export const updateUser = async (user) => {
+  const {id, name } = user
+  const res = await axios.patch(`${API_URL}/${id}`,{
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`,
+      name
+    }
+  })
+}
 
 
 export const logout = () => {

@@ -1,13 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProfiles } from '../../actions/auth';
-import UsersContainer from "../../components/ProfilesContainer/ProfilesContainer";
+import { getAllProfiles, updateUser } from '../../actions/auth';
+import ProfilesContainer from "../../components/ProfilesContainer/ProfilesContainer";
 import { useEffect, useState } from "react";
+
 
 const Dashboard = () => {
   const [hidden, setHidden] = useState(true)
   const { user, profiles } = useSelector(state => state.authReducer)
   const dispatch = useDispatch()
-  const state = useSelector(state => state)
+
   const handleGetAllProfiles = () => {
     dispatch(getAllProfiles())
   }
@@ -38,7 +39,7 @@ const Dashboard = () => {
         <div>
           <button onClick={() => setHidden(!hidden)}>{hidden ? "Show Users" : "Hide Users"}</button>
           {!hidden ?
-            <UsersContainer />
+            <ProfilesContainer />
             : null
           }
         </div>
