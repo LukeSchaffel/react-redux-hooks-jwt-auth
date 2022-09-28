@@ -4,10 +4,10 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
+  GET_USERS_Fail,
+  GET_USERS_SUCCESS
 } from "../actions/types";
 import { getUserFromToken } from "../services/tokenService";
-
-// const user = JSON.parse(localStorage.getItem("user"));
 
 const user = getUserFromToken()
 
@@ -47,6 +47,11 @@ export const authReducer = (state = initialState, action) => {
         ...state,
         isLoggedIn: false,
         user: null,
+      };
+    case GET_USERS_SUCCESS:
+      return {
+        ...state,
+        users: payload.users
       };
     default:
       return state;

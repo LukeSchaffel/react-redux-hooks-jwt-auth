@@ -1,9 +1,15 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllUsers } from '../../actions/auth';
 
 const Dashboard = () => {
-  const state = useSelector(state => state)
   const { user } = useSelector(state => state.authReducer)
+  const dispatch = useDispatch()
+  const state = useSelector(state => state)
+  const handleGetAllUsers = () => {
+    dispatch(getAllUsers())
+  }
 
+  console.log(user);
   return ( 
 
    <article>

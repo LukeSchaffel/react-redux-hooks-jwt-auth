@@ -7,12 +7,16 @@ import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Dashboard from './pages/Dashboard/Dashboard';
 import { useDispatch, useSelector } from "react-redux";
+import { getAllUsers } from './actions/auth';
 
 
 
 function App() {
-
+  const dispatch = useDispatch()
   const state = useSelector(state => state)
+  const handleGetAllUsers = () => {
+    dispatch(getAllUsers())
+  }
 
   return (
     <div className="App">
@@ -27,6 +31,10 @@ function App() {
         <Route path='/dashboard'
         element={<Dashboard />} />
       </Routes>
+
+      <button onClick={() => handleGetAllUsers()}>
+        get all users
+      </button>
     </div>
   );
 }
