@@ -4,8 +4,8 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
-  GET_USERS_Fail,
-  GET_USERS_SUCCESS
+  GET_PROFILES_FAIL,
+  GET_PROFILES_SUCCESS
 } from "../actions/types";
 import { getUserFromToken } from "../services/tokenService";
 
@@ -48,10 +48,10 @@ export const authReducer = (state = initialState, action) => {
         isLoggedIn: false,
         user: null,
       };
-    case GET_USERS_SUCCESS:
+    case GET_PROFILES_SUCCESS:
       return {
         ...state,
-        users: payload.users
+        profiles: payload.profiles
       };
     default:
       return state;

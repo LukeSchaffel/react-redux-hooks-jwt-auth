@@ -27,7 +27,7 @@ export const login = async (email, password) => {
   return data
 };
 
-export const getAllUsers = async (user) => {
+export const getAllProfiles = async (user) => {
   const res = await axios.get(`${API_URL}`, {
     headers: {
       'Authorization': `Bearer ${tokenService.getToken()}`

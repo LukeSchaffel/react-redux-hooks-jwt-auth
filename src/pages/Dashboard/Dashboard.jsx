@@ -1,24 +1,24 @@
 import { useDispatch, useSelector } from "react-redux";
-import { getAllUsers } from '../../actions/auth';
-import UsersContainer from "../../components/UsersContainer/UsersContainer";
+import { getAllProfiles } from '../../actions/auth';
+import UsersContainer from "../../components/ProfilesContainer/ProfilesContainer";
 import { useEffect, useState } from "react";
 
 const Dashboard = () => {
   const [hidden, setHidden] = useState(true)
-  const { user, users } = useSelector(state => state.authReducer)
+  const { user, profiles } = useSelector(state => state.authReducer)
   const dispatch = useDispatch()
   const state = useSelector(state => state)
-  const handleGetAllUsers = () => {
-    dispatch(getAllUsers())
+  const handleGetAllProfiles = () => {
+    dispatch(getAllProfiles())
   }
   const isAdmin = user.role === 'ADMIN' ? true : false
 
   useEffect(() => {
     if (isAdmin) {
-      handleGetAllUsers()
+      handleGetAllProfiles()
     }
   }, [])
-
+console.log(profiles);
 
   return (
     <>

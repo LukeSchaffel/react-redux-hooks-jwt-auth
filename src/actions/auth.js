@@ -5,8 +5,8 @@ import {
   LOGIN_FAIL,
   LOGOUT,
   SET_MESSAGE,
-  GET_USERS_SUCCESS,
-  GET_USERS_Fail
+  GET_PROFILES_SUCCESS,
+  GET_PROFILES_FAIL
 } from "./types";
 
 import * as authService from "../services/authService";
@@ -34,7 +34,7 @@ export const signup = (username, email, password) => (dispatch) => {
         error.toString();
 
       dispatch({
-        type: GET_USERS_Fail,
+        type: GET_PROFILES_FAIL,
       });
 
       dispatch({
@@ -79,13 +79,13 @@ export const login = (username, password) => (dispatch) => {
   );
 };
 
-export const getAllUsers = () => (dispatch) => {
-  return authService.getAllUsers()
+export const getAllProfiles = () => (dispatch) => {
+  return authService.getAllProfiles()
   .then(
     (data) => {
       dispatch({
-        type: GET_USERS_SUCCESS,
-        payload: { users: data },
+        type: GET_PROFILES_SUCCESS,
+        payload: { profiles: data },
       });
 
       return Promise.resolve();
