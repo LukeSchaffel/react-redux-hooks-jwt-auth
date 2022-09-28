@@ -1,5 +1,7 @@
 .container {
+  border: .5rem solid rgb(33,37,41);
+  max-width: 30%;
+  margin: 1rem auto;
   display: flex;
-  align-items: center;
   flex-direction: column;
 }

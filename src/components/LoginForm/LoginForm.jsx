@@ -10,7 +10,7 @@ const LoginForm = () => {
   const { isLoggedIn } = useSelector(state => state.authReducer);
   const { messageReducer } = useSelector(state => state);
 
-  
+  console.log(state);
   const dispatch = useDispatch();
 
 

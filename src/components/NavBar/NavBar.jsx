@@ -5,7 +5,7 @@ import { useCallback } from 'react';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import { RiLoginCircleFill } from 'react-icons/ri';
 import { FaSignOutAlt, FaHome } from "react-icons/fa";
-import { MdOutlineDashboardCustomize } from "react-icons/md";
+import { MdOutlineDashboardCustomize, MdOutlineCreate } from "react-icons/md";
 
 
 const NavBar = () => {
@@ -42,7 +42,7 @@ const NavBar = () => {
             <Navbar.Brand href="/">Friday Auth Template <FaHome /> </Navbar.Brand>
             <Nav className="me-auto">
               <Nav.Link href="/login">Log In  <RiLoginCircleFill /></Nav.Link>
-              <Nav.Link href="/signup">Sign Up</Nav.Link>
+              <Nav.Link href="/signup">Sign Up <MdOutlineCreate /> </Nav.Link>
             </Nav>
           </Container>
         </Navbar>
