@@ -8,6 +8,7 @@ import Login from './pages/Login/Login'
 import Dashboard from './pages/Dashboard/Dashboard';
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUsers } from './actions/auth';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
@@ -17,7 +18,7 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar />
+      <NavBar className='nav'/>
       <Routes>
         <Route path='/'
         element={<Landing />} />

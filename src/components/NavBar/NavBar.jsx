@@ -2,10 +2,11 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../actions/auth"
 import { useCallback } from 'react';
+import { Navbar, Container, Nav } from 'react-bootstrap';
 
 const NavBar = () => {
   const dispatch = useDispatch()
-  
+
   const { user } = useSelector(state => state.authReducer);
 
 
@@ -17,22 +18,30 @@ const NavBar = () => {
   return (
     <>
       {user ?
-        <nav>
-          <ul>
-            <li>Welcome, {user.name}</li>
-            <li><Link to="/profiles">Profiles</Link></li>
-            <li><Link to="" onClick={logOut}>LOG OUT</Link></li>
-            <li><Link to="/changePassword">Change Password</Link></li>
-            <li><Link to='/dashboard'>Dash Board</Link></li>
-          </ul>
-        </nav>
-      :
-        <nav>
-          <ul>
-            <li><Link to="/login">Log In</Link></li>
-            <li><Link to="/signup">Sign Up</Link></li>
-          </ul>
-        </nav>
+        <Navbar bg="dark" variant="dark">
+          <Container>
+            <Navbar.Brand href="/">Friday Auth Template</Navbar.Brand>
+            <Nav className="me-auto">
+              {user.role === 'ADMIN' ?
+                <Nav.Link href="/dashboard">Admin Dashboard</Nav.Link>
+                :
+                <Nav.Link href="/dashboard">Dashboard</Nav.Link>
+              }
+              <Nav.Link href="/" onClick={logOut}>Log Out</Nav.Link>
+            </Nav>
+          </Container>
+        </Navbar>
+
+        :
+        <Navbar bg="info" variant="dark">
+          <Container>
+            <Navbar.Brand href="/">Friday Auth Template</Navbar.Brand>
+            <Nav className="me-auto">
+              <Nav.Link href="/login">Log In</Nav.Link>
+              <Nav.Link href="/signup">Sign Up</Nav.Link>
+            </Nav>
+          </Container>
+        </Navbar>
       }
     </>
   )
