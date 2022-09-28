@@ -14,9 +14,6 @@ import { getAllUsers } from './actions/auth';
 function App() {
   const dispatch = useDispatch()
   const state = useSelector(state => state)
-  const handleGetAllUsers = () => {
-    dispatch(getAllUsers())
-  }
 
   return (
     <div className="App">
@@ -31,10 +28,6 @@ function App() {
         <Route path='/dashboard'
         element={<Dashboard />} />
       </Routes>
-
-      <button onClick={() => handleGetAllUsers()}>
-        get all users
-      </button>
     </div>
   );
 }
