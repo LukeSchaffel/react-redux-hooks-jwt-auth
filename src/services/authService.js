@@ -28,7 +28,6 @@ export const login = async (email, password) => {
 };
 
 export const getAllUsers = async (user) => {
-  const token = tokenService.getToken()
   const res = await axios.get(`${API_URL}`, {
     headers: {
       'Authorization': `Bearer ${tokenService.getToken()}`
@@ -36,6 +35,15 @@ export const getAllUsers = async (user) => {
   })
   const users = res.data
   return users
+}
+
+export const deleteUser = async (user) => {
+  const { id } = user
+  const res = await axios.delete(`${API_URL}/${id}`,{
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    }
+  })
 }
 
 

@@ -11,7 +11,6 @@ const UsersContainer = () => {
   <div className={styles.container}>
     {users ? users.map((user, idx) => {
       return  <UserCard user={user} key={user.id}/>
-
     })
     : null
     } 
