@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../actions/auth"
 import { useCallback } from 'react';
@@ -10,12 +10,10 @@ import { MdOutlineDashboardCustomize, MdOutlineCreate } from "react-icons/md";
 
 const NavBar = () => {
   const dispatch = useDispatch()
-
   const { user } = useSelector(state => state.authReducer);
-
-
   const logOut = useCallback(() => {
     dispatch(logout());
+    
   }, [dispatch]);
 
 
@@ -31,7 +29,7 @@ const NavBar = () => {
                 :
                 <Nav.Link href="/dashboard" >Dashboard <MdOutlineDashboardCustomize /></Nav.Link>
               }
-              <Nav.Link href="/" onClick={logOut}>Log Out <FaSignOutAlt /></Nav.Link>
+              <Nav.Link href="/login" onClick={logOut}>Log Out <FaSignOutAlt /></Nav.Link>
             </Nav>
           </Container>
         </Navbar>

@@ -1,13 +1,11 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import styles from './SignupForm.module.css'
-import * as authService from '../../services/authService'
 import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../../actions/auth";
 
 const SignupForm = props => {
   const dispatch = useDispatch()
-
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
     name: '',
@@ -15,8 +13,6 @@ const SignupForm = props => {
     password: '',
     passwordConf: '',
   })
-
-
   const handleChange = e => {
     props.updateMessage('')
     setFormData({
@@ -24,11 +20,10 @@ const SignupForm = props => {
       [e.target.name]: e.target.value,
     })
   }
-
   const handleSubmit = async e => {
     e.preventDefault()
     try {
-      dispatch(signup(formData.name, formData.email, formData.password))
+      await dispatch(signup(formData.name, formData.email, formData.password))
       navigate('/login')
     } catch (err) {
       

@@ -9,8 +9,10 @@ import {
   GET_PROFILES_FAIL,
   DELETE_PROFILE_SUCCESS,
   DELETE_PROFILE_FAIL,
-  UPDATE_USER_FAIL,
-  UPDATE_USER_SUCCESS
+  UPDATE_SELF_FAIL,
+  UPDATE_SELF_SUCCESS,
+  UPDATE_OTHER_SUCCESS,
+  UPDATE_OTHER_FAIL
 } from "./types";
 
 import * as authService from "../services/authService";
@@ -149,13 +151,12 @@ export const deleteProfile = (id) => (dispatch) => {
   );
 }
 
-export const updateUser = (user, newUsername) => (dispatch) => {
-  console.log(user, newUsername);
+export const updateSelf = (user, newUsername) => (dispatch) => {
   return authService.updateUser(user, newUsername)
   .then(
     (data) => {
       dispatch({
-        type: UPDATE_USER_SUCCESS,
+        type: UPDATE_SELF_SUCCESS,
         payload: data,
       });
 
@@ -170,7 +171,39 @@ export const updateUser = (user, newUsername) => (dispatch) => {
         error.toString();
 
       dispatch({
-        type: UPDATE_USER_FAIL,
+        type: UPDATE_SELF_FAIL,
+      });
+
+      dispatch({
+        type: SET_MESSAGE,
+        payload: message,
+      });
+
+      return Promise.reject();
+    }
+  );
+}
+export const updateOther = (user, newUsername) => (dispatch) => {
+  return authService.updateUser(user, newUsername)
+  .then(
+    (data) => {
+      dispatch({
+        type: UPDATE_OTHER_SUCCESS,
+        payload: data,
+      });
+
+      return Promise.resolve();
+    },
+    (error) => {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      dispatch({
+        type: UPDATE_OTHER_FAIL,
       });
 
       dispatch({
@@ -184,9 +217,7 @@ export const updateUser = (user, newUsername) => (dispatch) => {
 }
 
 export const logout = () => (dispatch) => {
-  
   authService.logout();
-  
   dispatch({
     type: LOGOUT,
   });

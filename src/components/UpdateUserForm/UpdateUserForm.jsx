@@ -2,12 +2,13 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from './UpdateUserForm.module.css'
 import { useDispatch, useSelector } from "react-redux";
-import { updateUser } from "../../actions/auth";
+import { updateSelf, updateOther } from "../../actions/auth";
 
 
 const UpdateUserForm = ({ userToUpdate }) => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const { user } = useSelector(state => state.authReducer)
 
   const [formData, setFormData] = useState({
     username: userToUpdate.name
@@ -23,8 +24,13 @@ const UpdateUserForm = ({ userToUpdate }) => {
   const handleSubmit = async (evt) => {
     evt.preventDefault()
     try {
-       dispatch(updateUser(userToUpdate, formData.username))
-      navigate('/')
+      if (user.id === userToUpdate.id) {
+        await dispatch(updateSelf(userToUpdate, formData.username))
+        navigate('/') 
+      } else {
+        await dispatch(updateOther(userToUpdate, formData.username))
+        navigate('/') 
+      }
     } catch (err) {
       throw err
     }

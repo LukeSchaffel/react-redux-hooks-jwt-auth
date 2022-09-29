@@ -7,7 +7,11 @@ import {
   GET_PROFILES_FAIL,
   GET_PROFILES_SUCCESS,
   DELETE_PROFILE_FAIL,
-  DELETE_PROFILE_SUCCESS
+  DELETE_PROFILE_SUCCESS,
+  UPDATE_SELF_SUCCESS,
+  UPDATE_SELF_FAIL,
+  UPDATE_OTHER_FAIL,
+  UPDATE_OTHER_SUCCESS
 } from "../actions/types";
 import { getUserFromToken } from "../services/tokenService";
 
@@ -67,7 +71,15 @@ export const authReducer = (state = initialState, action) => {
         ...state,
         profiles: newProfiles2
       }
-
+    case UPDATE_SELF_SUCCESS:
+      return {
+        ...state,
+        user: payload
+      }
+    case UPDATE_OTHER_SUCCESS:
+      return {
+        ...state
+      }
     default:
       return state;
   }

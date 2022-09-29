@@ -21,7 +21,7 @@ const LoginForm = () => {
   const handleSubmit = async evt => {
     evt.preventDefault()
     try {
-       dispatch(login(formData.email, formData.password))
+      await dispatch(login(formData.email, formData.password))
       navigate('/')
     } catch (err) {
       
