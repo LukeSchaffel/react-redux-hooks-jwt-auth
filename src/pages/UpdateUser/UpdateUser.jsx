@@ -1,20 +1,19 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from 'react-router-dom';
+import UpdateUserForm from '../../components/UpdateUserForm/UpdateUserForm';
 
-const UpdateUser = ({ profile }) => {
+const UpdateUser = () => {
   const location = useLocation()
-  const { user, profiles } = useSelector(state => state.authReducer)
+  const { user } = useSelector(state => state.authReducer)
   const [userToUpdate, setUserToUpdate] = useState(
     location.state ? location.state.profile : user
   )
-
-
-  console.log('logged in user', user);
-  console.log('user to update:', userToUpdate);
   return ( 
   <div>
-    <h1>this is the update user page</h1>
+    <UpdateUserForm 
+      userToUpdate={userToUpdate}
+    />
   </div> 
   );
 }

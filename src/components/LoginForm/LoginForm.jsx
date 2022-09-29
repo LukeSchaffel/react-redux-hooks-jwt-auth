@@ -6,14 +6,7 @@ import { login } from "../../actions/auth";
 
 const LoginForm = () => {
   const state = useSelector(state => state)
-  
-  const { isLoggedIn } = useSelector(state => state.authReducer);
-  const { messageReducer } = useSelector(state => state);
-
-  console.log(state);
   const dispatch = useDispatch();
-
-
   const [formData, setFormData] = useState({
     email: '',
     password: '',
