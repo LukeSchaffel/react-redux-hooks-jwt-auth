@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProfiles, updateUser } from '../../actions/auth';
+import { getAllProfiles } from '../../actions/auth';
 import ProfilesContainer from "../../components/ProfilesContainer/ProfilesContainer";
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 const Dashboard = () => {
   const [hidden, setHidden] = useState(true)
@@ -34,18 +34,17 @@ const Dashboard = () => {
       <article>
         <header>
           <h1>Welcome {user.name} </h1>
-          <button onClick={() => navigateToUpdateUser()}>Change Username</button>
-          <button>Delete Account</button>
         </header>
         <div>
-          <p>
-            My Info: Email: {user.email}
-          </p>
+          <h3>
+            My Info: Email: {user.email}           <Button varient="primary" onClick={() => navigateToUpdateUser()}>Change Username</Button>
+
+          </h3>
         </div>
       </article>
       {isAdmin ?
         <div>
-          <button onClick={() => setHidden(!hidden)}>{hidden ? "Show Users" : "Hide Users"}</button>
+          <Button variant={hidden ? 'primary' : 'danger'} onClick={() => setHidden(!hidden)}>{hidden ? "Show Users" : "Hide Users"}</Button>
           {!hidden ?
             <ProfilesContainer />
             : null

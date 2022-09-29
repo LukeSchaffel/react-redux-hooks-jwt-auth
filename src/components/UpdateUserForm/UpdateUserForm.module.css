@@ -1,16 +1,17 @@
 .container {
+  border: .5rem solid rgb(33,37,41);
+  max-width: 20%;
+  margin: 1rem auto;
+  padding: 2rem;
   display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 50px;
-}
+  flex-direction: column;
+  box-shadow: 10px 10px;
+  }
 
-.label,
-.button {
-  margin-right: 0.5rem;
-}
+  .inputContainer {
+    margin: 2rem;
+  }
 
-.inputContainer {
-  margin-bottom: 1rem;
-}
+  .buttonDiv {
+    display: flex;
+  }

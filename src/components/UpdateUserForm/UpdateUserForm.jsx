@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import styles from './UpdateUserForm.module.css'
 import { useDispatch, useSelector } from "react-redux";
 import { updateSelf, updateOther } from "../../actions/auth";
-
+import { Button } from "react-bootstrap";
 
 const UpdateUserForm = ({ userToUpdate }) => {
   const navigate = useNavigate()
@@ -63,12 +63,12 @@ const UpdateUserForm = ({ userToUpdate }) => {
         />
       </div>
       
-      <div className={styles.inputContainer}>
-        <button disabled={isFormInvalid()} className={styles.button}>
+      <div className={styles.buttonDiv}>
+        <Button varient='primary' disabled={isFormInvalid()} >
           Change Username
-        </button>
+        </Button>
         <Link to="/">
-          <button>Cancel</button>
+          <Button varient='danger'>Cancel</Button>
         </Link>
       </div>
     </form>

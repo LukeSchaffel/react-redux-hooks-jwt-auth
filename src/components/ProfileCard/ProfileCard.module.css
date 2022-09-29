@@ -4,6 +4,7 @@
   padding: 1rem;
   border-radius: 1%;
   margin: 1rem auto;
+  box-shadow: 10px 10px;
 
 }
 .profileCard header{
@@ -15,11 +16,11 @@
 
 .buttonDiv {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
 }
 
 .btn {
   width: 30%;
-  margin-bottom: 3px;
+  margin: 3px;
 }
