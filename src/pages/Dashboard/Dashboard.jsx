@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllProfiles, updateUser } from '../../actions/auth';
 import ProfilesContainer from "../../components/ProfilesContainer/ProfilesContainer";
 import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 
 const Dashboard = () => {
@@ -21,12 +22,19 @@ const Dashboard = () => {
   }, [])
 
 
+  const navigate = useNavigate()
+
+  const navigateToUpdateUser = () => {
+    navigate('/updateuser')
+  }
+
+
   return (
     <>
       <article>
         <header>
           <h1>Welcome {user.name} </h1>
-          <button>Change Name</button>
+          <button onClick={() => navigateToUpdateUser()}>Change Username</button>
           <button>Delete Account</button>
         </header>
         <div>

@@ -55,6 +55,7 @@ export const updateUser = async (user) => {
       name
     }
   })
+  console.log(res);
 }
 
 

@@ -149,8 +149,8 @@ export const deleteProfile = (id) => (dispatch) => {
   );
 }
 
-export const updateUser = (id) => (dispatch) => {
-  return authService.updateUser(id)
+export const updateUser = (user) => (dispatch) => {
+  return authService.updateUser(user)
   .then(
     (data) => {
       dispatch({

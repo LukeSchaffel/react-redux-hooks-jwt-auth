@@ -1,15 +1,20 @@
 import styles from './ProfileCard.module.css'
 import { useDispatch, useSelector } from "react-redux";
 import { deleteProfile } from '../../actions/auth';
+import { useNavigate } from 'react-router-dom';
 
 const ProfileCard = ({ profile }) => {
   const { user, profiles } = useSelector(state => state.authReducer)
   const dispatch = useDispatch()
 
   const handleDeleteProfile = (id) => {
-    console.log(id);
     dispatch(deleteProfile(id))
+  }
 
+  const navigate = useNavigate()
+
+  const navigateToUpdateOtherUser = () => {
+    navigate('/updateuser', { state: { profile } })
   }
 
   return (
@@ -19,7 +24,7 @@ const ProfileCard = ({ profile }) => {
         <h3>{profile.email}</h3>
       </header>
       <div>
-        <button>
+        <button onClick={()=> navigateToUpdateOtherUser()}>
           Update profile
         </button>
         <button onClick={()=> handleDeleteProfile(profile.id)}>

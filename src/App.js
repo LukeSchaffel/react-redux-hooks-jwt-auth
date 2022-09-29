@@ -9,6 +9,7 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUsers } from './actions/auth';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import UpdateUser from './pages/UpdateUser/UpdateUser';
 
 
 
@@ -28,6 +29,11 @@ function App() {
         element={<Signup />} />
         <Route path='/dashboard'
         element={<Dashboard />} />
+        <Route path='/updateuser'
+        element={<UpdateUser />} 
+        />
+          
+
       </Routes>
     </div>
   );
