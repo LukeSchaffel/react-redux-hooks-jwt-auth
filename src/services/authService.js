@@ -47,16 +47,20 @@ export const deleteProfile = async (id) => {
   return profile
 }
 
-export const updateUser = async (user) => {
-  const {id, name } = user
+
+export const updateUser = async (user, newName) => {
+  const { id } = user
   const res = await axios.patch(`${API_URL}/${id}`,{
+    name: newName
+  }, {
     headers: {
-      'Authorization': `Bearer ${tokenService.getToken()}`,
-      name
+      'Authorization': `Bearer ${tokenService.getToken()}`
     }
   })
-  console.log(res);
+  const updatedUser = res.data
+  return updatedUser
 }
+
 
 
 export const logout = () => {

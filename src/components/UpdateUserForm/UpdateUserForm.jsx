@@ -1,8 +1,14 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from './UpdateUserForm.module.css'
+import { useDispatch, useSelector } from "react-redux";
+import { updateUser } from "../../actions/auth";
+
 
 const UpdateUserForm = ({ userToUpdate }) => {
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
   const [formData, setFormData] = useState({
     username: userToUpdate.name
   })
@@ -14,8 +20,14 @@ const UpdateUserForm = ({ userToUpdate }) => {
     })
   }
 
-  const handleSubmit = () => {
-    return
+  const handleSubmit = async (evt) => {
+    evt.preventDefault()
+    try {
+       dispatch(updateUser(userToUpdate, formData.username))
+      navigate('/')
+    } catch (err) {
+      throw err
+    }
   }
 
   const isFormInvalid = () => {
