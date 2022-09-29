@@ -64,11 +64,11 @@ const UpdateUserForm = ({ userToUpdate }) => {
       </div>
       
       <div className={styles.buttonDiv}>
-        <Button varient='primary' disabled={isFormInvalid()} >
+        <button disabled={isFormInvalid()} className={styles.button}>
           Change Username
-        </Button>
+        </button>
         <Link to="/">
-          <Button varient='danger'>Cancel</Button>
+          <button>Cancel</button>
         </Link>
       </div>
     </form>

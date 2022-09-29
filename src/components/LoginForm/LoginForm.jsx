@@ -24,7 +24,7 @@ const LoginForm = () => {
       await dispatch(login(formData.email, formData.password))
       navigate('/')
     } catch (err) {
-      
+      throw err
     }
   }
 
